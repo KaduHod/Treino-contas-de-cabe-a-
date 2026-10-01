@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Treino de Cálculo Mental</title>
+  <!-- Tailwind apenas via CDN (nenhuma outra biblioteca ou CSS externo) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-slate-100 text-slate-800 flex items-start justify-center p-4 sm:p-6 antialiased">
+  <main class="w-full max-w-md bg-white rounded-2xl shadow-lg p-5 sm:p-7 mt-4 sm:mt-8">
+    <!-- Cabeçalho -->
+    <h1 class="text-center text-xl sm:text-2xl font-bold text-slate-900 mb-5">Treino de Cálculo Mental</h1>
+
+    <!-- Placar -->
+    <div class="grid grid-cols-2 gap-3 mb-6">
+      <div class="bg-green-50 rounded-xl p-3 text-center border border-green-100">
+        <p class="text-xs font-semibold uppercase tracking-wide text-green-700">Acertos</p>
+        <p id="acertos" class="text-2xl font-bold text-green-700">0</p>
+      </div>
+      <div class="bg-slate-50 rounded-xl p-3 text-center border border-slate-200">
+        <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Tentativas</p>
+        <p id="tentativas" class="text-2xl font-bold text-slate-700">0</p>
+      </div>
+    </div>
+
+    <!-- Configurações -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+      <label class="block">
+        <span class="text-sm font-medium text-slate-600">Operação</span>
+        <select id="operacao"
+          class="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2.5 text-slate-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200">
+          <option value="multiplicacao">Multiplicação</option>
+          <option value="divisao">Divisão</option>
+          <option value="ambas">Ambas</option>
+        </select>
+      </label>
+      <label class="block">
+        <span class="text-sm font-medium text-slate-600">Tipo de número</span>
+        <select id="tipo"
+          class="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2.5 text-slate-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200">
+          <option value="inteiro">Apenas inteiros</option>
+          <option value="livre">Livre (até 2 casas decimais)</option>
+        </select>
+      </label>
+    </div>
+
+    <!-- Conta atual -->
+    <div class="text-center mb-6">
+      <p id="conta" class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900">—</p>
+      <p id="dica" class="text-sm text-slate-500 mt-2 h-5">&nbsp;</p>
+    </div>
+
+    <!-- Resposta -->
+    <label class="block mb-4">
+      <span class="text-sm font-medium text-slate-600">Sua resposta</span>
+      <input id="resposta" type="text" inputmode="decimal" autocomplete="off"
+        placeholder="Digite a resposta"
+        class="mt-1 w-full rounded-lg border border-slate-300 p-3 text-center text-2xl font-semibold text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 disabled:bg-slate-100 disabled:text-slate-500" />
+    </label>
+
+    <!-- Botão de ação (Verificar resposta / Próxima conta) -->
+    <button id="acao" type="button" disabled
+      class="w-full rounded-lg bg-indigo-600 p-3 text-base font-semibold text-white transition-colors hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-300 disabled:bg-slate-300 disabled:text-slate-500 disabled:cursor-not-allowed">
+      Verificar resposta
+    </button>
+
+    <!-- Feedback -->
+    <p id="feedback" class="text-center mt-4 font-semibold h-6"></p>
+  </main>
+
+  <!-- Lógica do projeto -->
+  <script src="script.js"></script>
+</body>
+</html>
