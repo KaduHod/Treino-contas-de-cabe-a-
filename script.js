@@ -32,10 +32,10 @@ const campoTentativas = document.getElementById('tentativas');
     // No modo inteiro sempre é inteiro; no modo livre pode ter até 2 casas decimais.
     function gerarNumero(livre) {
         if (!livre || Math.random() < 0.5) {
-            return inteiroAleatorio(1, 1000);
+            return inteiroAleatorio(1, 100);
         }
         // Gera as casas decimais como um inteiro dividido por 100 (evita erros de ponto flutuante).
-            return Number((inteiroAleatorio(100, 100000) / 100).toFixed(2));
+            return Number((inteiroAleatorio(100, 10000) / 100).toFixed(2));
     }
 
 // Mostra o número no formato brasileiro (vírgula no lugar do ponto).
@@ -81,9 +81,9 @@ const campoTentativas = document.getElementById('tentativas');
                 valorCorreto = Number((dividendo / divisor).toFixed(2));
                 campoDica.textContent = 'Arredonde para 2 casas decimais';
             } else {
-                // Modo inteiro: divisão exata com dividendo até 1000.
+                // Modo inteiro: divisão exata com dividendo até 100.
                     divisor = inteiroAleatorio(2, 100);
-                const quociente = inteiroAleatorio(1, Math.floor(1000 / divisor));
+                const quociente = inteiroAleatorio(1, Math.floor(100 / divisor));
                 dividendo = divisor * quociente;
                 valorCorreto = quociente;
                 campoDica.textContent = '';
